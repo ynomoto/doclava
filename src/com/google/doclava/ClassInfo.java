@@ -16,14 +16,24 @@
 
 package com.google.doclava;
 
-import com.google.clearsilver.jsilver.data.Data;
-
-import com.sun.javadoc.*;
-
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.*;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.Vector;
+
+import com.google.clearsilver.jsilver.data.Data;
+import com.sun.javadoc.ClassDoc;
 
 public class ClassInfo extends DocInfo implements ContainerInfo, Comparable, Scoped {
   public static final Comparator<ClassInfo> comparator = new Comparator<ClassInfo>() {
@@ -1730,7 +1740,7 @@ public class ClassInfo extends DocInfo implements ContainerInfo, Comparable, Sco
 	  StringBuffer stringBuffer = new StringBuffer();
 	  BufferedReader reader;
 	  
-      reader = new BufferedReader(new FileReader(mPosition.file));
+      reader = new BufferedReader(new InputStreamReader(new FileInputStream(mPosition.file),"UTF-8"));
       String line = null;
 
       while ((line = reader.readLine()) != null) {
